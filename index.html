@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanilla Kanban — Complex JS + HTML + CSS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Kanban Board</h1>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search (/, Esc to clear)" />
+      <select id="filterPriority" title="Filter by priority">
+        <option value="">All priorities</option>
+        <option value="low">Low</option>
+        <option value="normal">Normal</option>
+        <option value="high">High</option>
+      </select>
+      <select id="filterAssignee" title="Filter by assignee"></select>
+      <button id="addTaskBtn" class="primary">+ New Task</button>
+      <button id="undoBtn" title="Ctrl+Z">Undo</button>
+      <button id="redoBtn" title="Ctrl+Y">Redo</button>
+      <button id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main class="board" aria-label="Kanban Board">
+    <section class="column" data-col="backlog" aria-label="Backlog">
+      <header>Backlog</header>
+      <div class="dropzone" data-col="backlog" role="list"></div>
+    </section>
+    <section class="column" data-col="todo" aria-label="To Do">
+      <header>To Do</header>
+      <div class="dropzone" data-col="todo" role="list"></div>
+    </section>
+    <section class="column" data-col="inprogress" aria-label="In Progress">
+      <header>In Progress</header>
+      <div class="dropzone" data-col="inprogress" role="list"></div>
+    </section>
+    <section class="column" data-col="done" aria-label="Done">
+      <header>Done</header>
+      <div class="dropzone" data-col="done" role="list"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <dialog id="taskDialog">
+    <form id="taskForm" method="dialog">
+      <h3 id="dialogTitle">New Task</h3>
+
+      <label>Title
+        <input required name="title" maxlength="120" />
+      </label>
+
+      <label>Description
+        <textarea name="description" rows="4" maxlength="1000"></textarea>
+      </label>
+
+      <div class="grid2">
+        <label>Assignee
+          <input name="assignee" list="assignees" placeholder="Type a name…" />
+          <datalist id="assignees"></datalist>
+        </label>
+        <label>Priority
+          <select name="priority">
+            <option value="low">Low</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="grid2">
+        <label>Due Date
+          <input name="due" type="date" />
+        </label>
+        <label>Column
+          <select name="column">
+            <option value="backlog">Backlog</option>
+            <option value="todo">To Do</option>
+            <option value="inprogress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+      </div>
+
+      <menu>
+        <button value="cancel" class="ghost">Cancel</button>
+        <button id="deleteBtn" class="danger" type="button" hidden>Delete</button>
+        <button id="saveBtn" value="default" class="primary">Save</button>
+      </menu>
+      <input type="hidden" name="id" />
+    </form>
+  </dialog>
+
+  <footer class="app-footer">
+    <small>
+      Tips: Press <kbd>/</kbd> to focus search. <kbd>N</kbd> new task. Drag cards between columns.
+      <kbd>Ctrl/⌘+Z</kbd> undo, <kbd>Ctrl/⌘+Y</kbd> redo. Double-click a card to edit.
+    </small>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
