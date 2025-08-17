@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vanilla Kanban — Complex JS + HTML + CSS</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
   <header class="app-header">
@@ -95,11 +97,25 @@
     </form>
   </dialog>
 
-  <footer class="app-footer">
-    <small>
-      Tips: Press <kbd>/</kbd> to focus search. <kbd>N</kbd> new task. Drag cards between columns.
-      <kbd>Ctrl/⌘+Z</kbd> undo, <kbd>Ctrl/⌘+Y</kbd> redo. Double-click a card to edit.
-    </small>
+  <footer class="footer">
+
+    <div class="footer-text">
+                <p>Copyright &copy; 2025 by Tajwer | All Rights Reserved.</p>
+                <!-- <span class="animate scroll" style="--i:1;"></span> -->
+            </div>
+            <div class="footer-iconTop">
+                <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+                <!-- <span class="animate scroll" style="--i:3;"></span> -->
+     </div>
+     <div>
+      <small>
+        Tips: Press <kbd>/</kbd> to focus search. <kbd>N</kbd> new task. Drag cards between columns.
+        <kbd>Ctrl/⌘+Z</kbd> undo, <kbd>Ctrl/⌘+Y</kbd> redo. Double-click a card to edit.
+        </small>
+     </div>
+
+
+          
   </footer>
 
   <script src="app.js" type="module"></script>

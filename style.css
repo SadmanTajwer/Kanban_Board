@@ -1,3 +1,19 @@
+* {
+    font-family: 'Times New Roman';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
 :root{
   --bg: #0b0c10;
   --panel: #11131a;
@@ -8,15 +24,20 @@
   --danger: #ff6b6b;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
   --radius: 16px;
+  --bg--color: #081b29;
+  --second-bg--color: #112e42;
+  --text--color: #ededed;
+  --main--color: #00abf0;
 }
 :root.light{
   --bg: #f6f7fb;
   --panel: #ffffff;
   --muted: #5b6478;
-  --text: #1d2330;
+  --text: #1f8de7;
   --accent: #2563eb;
   --accent-2: #059669;
   --danger: #dc2626;
+  --text--color: #1bc245;
   --shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box}
@@ -114,15 +135,95 @@ dialog::backdrop{background: rgba(0,0,0,.45); backdrop-filter: blur(2px)}
 .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
 menu{display:flex; gap:10px; justify-content:flex-end; margin:0; padding:0}
 
-.app-footer{
+
+
+
+/* .app-footer{
   position:fixed; bottom:0; inset-inline:0; padding:10px 16px;
   border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent);
   background: color-mix(in oklab, var(--bg) 85%, transparent);
   backdrop-filter: blur(6px);
-}
+} */
 kbd{
   background: color-mix(in oklab, var(--text) 12%, transparent);
   border: 1px solid color-mix(in oklab, var(--text) 25%, transparent);
   border-bottom-width:2px; border-radius:6px; padding:0 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size:.85em;
 }
+
+/* footer design section */
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg--color);
+}
+
+.footer-text,
+.footer-iconTop {
+    position: relative;
+}
+
+.footer-text p{
+    font-size: 1.6rem;
+}
+
+.footer-iconTop a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--main--color);
+    border: .2rem solid var(--main--color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.footer-iconTop a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg--color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.footer-iconTop a:hover::before{
+    width: 100%;
+}
+
+
+.footer-iconTop a i{
+    font-size: 2.4rem;
+    color: var(--bg--color);
+    transition: .5s;
+}
+
+.footer-iconTop a:hover i {
+    color: var(--main--color);
+}
+
+@media (max-width: 991px){
+    .footer{
+        padding: 2rem 4%;
+    }
+  }
+
+@media (max-width: 462px){
+
+    .footer{
+        flex-direction: column-reverse;
+    }
+      .footer p{
+        margin-top: 2rem;
+        text-align: center;
+    }
+  }
